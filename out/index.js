@@ -13,7 +13,7 @@ window.addEventListener('DOMContentLoaded', function () {
             url: 'views/drop.html',
             name: 'drop',
             autoShow: true,
-            opacity: 0.5,
+            opacity: 0.0,
             frame: false,
             minWidth: 165,
             maxWidth: 165,
@@ -29,25 +29,6 @@ window.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        var dropCreate = new fin.desktop.Window({
-            url: 'views/drop-to-create.html',
-            name: 'drop-to-create',
-            autoShow: true,
-            opacity: 0.0,
-            frame: false,
-            defaultWidth: 165,
-            defaultHeight: 165,
-            cornerRounding: {
-                height: 3,
-                width: 3
-            },
-            saveWindowState: false
-        }, function () {
-            dropCreate.contentWindow.addEventListener('mouseup', function (evnt) {
-                console.log('uppers man, uppers');
-            });
-        });
-
         var mousedown = ocn.update(function () {
             return false;
         }),
@@ -57,21 +38,25 @@ window.addEventListener('DOMContentLoaded', function () {
                 y: 0
             };
         }),
+            dropWinName = ocn.update(function () {
+            return '';
+        }),
             mouseisdown = function mouseisdown() {
             var mouseState = ocn.getItem(mousedown);
 
-            console.log('the mouse state', mouseState);
+            //console.log('the mouse state', mouseState);
             return mouseState;
         },
             wasStock = function wasStock(evnt) {
             return evnt.srcElement && evnt.srcElement.classList.contains('stock');
-        };
+        },
+            dropCreate = nextDropWindow();
 
         function moveToMousePosition() {
             requestAnimationFrame(function () {
                 fin.desktop.System.getMousePosition(function (loc) {
                     if (mouseisdown()) {
-                        console.log('yeah i do');
+                        //console.log('yeah i do');
                         var lastOffset = ocn.getItem(offset),
                             lx = lastOffset.x,
                             ly = lastOffset.y;
@@ -82,6 +67,41 @@ window.addEventListener('DOMContentLoaded', function () {
                 });
             });
         };
+
+        function nextDropWindow() {
+            var name = 'drop-to-create' + Math.random(),
+                dropCreate = new fin.desktop.Window({
+                url: 'views/drop-to-create.html',
+                name: name,
+                autoShow: true,
+                opacity: 0.0,
+                frame: false,
+                defaultWidth: 165,
+                defaultHeight: 165,
+                cornerRounding: {
+                    height: 3,
+                    width: 3
+                },
+                maximizable: false,
+                saveWindowState: false
+            }, function () {
+                dropCreate.contentWindow.addEventListener('mouseup', function (evnt) {
+                    console.log('uppers man, uppers');
+                });
+            });
+
+            ocn.update(dropWinName, function () {
+                return name;
+            });
+
+            console.log('this was the updated name', ocn.getItem(dropWinName));
+            return dropCreate;
+        }
+
+        ocn.subscribe('make-next', function () {
+            console.log('make it ');
+            dropCreate = nextDropWindow();
+        });
 
         ocn.subscribe('mousedown', function (evnt) {
             ocn.update(mousedown, function () {
@@ -112,24 +132,45 @@ window.addEventListener('DOMContentLoaded', function () {
                     opacity: 0.0,
                     duration: 500
                 }
+                // ,
+                // position: {
+                //     left: 10,
+                //     top: 25,
+                //     duration: 500
+                // }
             });
 
-            dropCreate.moveTo(dx, dy, function () {
-                dropCreate.animate({
+            console.log(ocn.getItem(dropWinName));
+
+            var theWin = fin.desktop.Window.wrap('tearouts', ocn.getItem(dropWinName));
+
+            theWin.moveTo(dx, dy, function () {
+                theWin.animate({
                     opacity: {
                         opacity: 1,
                         duration: 500
                     }
                 });
-            });
+            }, function () {});
+            ocn.dispatch('make-next');
         });
 
         ocn.subscribe('dragstart', function (evnt) {
             console.log(evnt);
+            evnt.dataTransfer.setData('text/plain', evnt.srcElement.id);
             dropTarget.updateOptions({
                 opacity: 0.5
             });
+
             moveToMousePosition();
+        });
+
+        ocn.subscribe('toggle-vis', function (id) {
+            console.log(id, document.getElementById(id));
+
+            var ele = document.getElementById(id);
+
+            ele.classList.toggle('hidden');
         });
 
         window.addEventListener('mousedown', function (evnt) {
@@ -139,7 +180,6 @@ window.addEventListener('DOMContentLoaded', function () {
         window.addEventListener('mouseup', function (evnt) {});
 
         window.addEventListener('dragend', function (evnt) {
-            //console.log('woah');
             ocn.dispatch('mouseup', evnt);
         });
 

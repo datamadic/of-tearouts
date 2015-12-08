@@ -38,3 +38,30 @@
 	margin:0;
 	padding: 0;
 }
+
+.drop-bdy {
+	overflow: hidden;
+	-webkit-app-region: drag;
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.top-bar {
+	/*height: 10px;*/
+	/*width: 90%;*/
+	-webkit-app-region: no-drag;
+	/*background-color: indianred;*/
+	flex: 1;
+
+}
+
+.drop-bdy .stock {
+	width: 120px;
+	height: 120px;
+	flex: 5;
+}

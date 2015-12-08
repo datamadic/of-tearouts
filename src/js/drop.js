@@ -8,4 +8,7 @@ target.addEventListener('dragover', evnt => {
 target.addEventListener('drop', evnt => {
 	evnt.preventDefault();
 	console.log('drop' , evnt);
+
+	window.opener.ocn.dispatch('drop-init', evnt.dataTransfer.getData('text/plain'));
+
 });

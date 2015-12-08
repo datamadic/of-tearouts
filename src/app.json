@@ -4,11 +4,11 @@
         "name": "tearouts",
         "description": "OpenFin POC",
         "url": "http://local:8080/",
-        "uuid": "tearouts-iwbsmxmn8u2fbt9",
+        "uuid": "tearouts",
         "autoShow": true
     },
     "runtime": {
-        "arguments": "",
+        "arguments": "--delete-cache-on-exit",
         "version": "stable"
     },
     "shortcut": {

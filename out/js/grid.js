@@ -5,7 +5,7 @@ angular.module('tearoutapp').directive('grid', function () {
               templateUrl: "/views/grid.html",
               restrict: "E",
               scope: {},
-              controller: function controller($scope, $interval) {
+              controller: function controller($scope, $interval, $rootScope) {
                      $scope.numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
                      $interval(function () {
@@ -16,6 +16,8 @@ angular.module('tearoutapp').directive('grid', function () {
 
                                    return num;
                             });
+
+                            $rootScope.$broadcast('nums-changed');
                      }, 500);
               }
        };
