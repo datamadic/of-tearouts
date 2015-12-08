@@ -5,7 +5,9 @@
         "description": "OpenFin POC",
         "url": "http://local:8080/",
         "uuid": "tearouts",
-        "autoShow": true
+        "autoShow": true,
+        "defaultHeight": 520,
+        "defaultWidth": 460
     },
     "runtime": {
         "arguments": "--delete-cache-on-exit",

@@ -1,6 +1,6 @@
 angular.module('tearoutapp').directive('grid', ()=>{
 	return {
-        templateUrl: "/views/grid.html",
+        templateUrl: "./views/grid.html",
         restrict: "E",
         scope: {},
         controller: function($scope, $interval, $rootScope){

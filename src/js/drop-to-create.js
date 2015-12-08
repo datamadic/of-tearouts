@@ -1,4 +1,3 @@
-//window.addEventListener('DOMContentLoaded', () => {
 fin.desktop.main(() => {
     var name = document.querySelector('.name'),
         value = document.querySelector('.value'),
@@ -15,7 +14,7 @@ fin.desktop.main(() => {
     });
 
     close.addEventListener('click', () => {
-        //root.$off('nums-changed');
+    	
         if (unsub) {
             unsub();
         }
@@ -37,9 +36,4 @@ fin.desktop.main(() => {
         unsub();
     });
 
-    //window.opener.ocn.dispatch('drop-rdy');
-
 });
-
-
-//});

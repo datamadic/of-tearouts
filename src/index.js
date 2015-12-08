@@ -42,8 +42,7 @@ window.addEventListener('DOMContentLoaded', () => {
             }),
             mouseisdown = () => {
                 var mouseState = ocn.getItem(mousedown);
-
-                //console.log('the mouse state', mouseState);
+                
                 return mouseState;
             },
             wasStock = (evnt) => {
@@ -169,10 +168,9 @@ window.addEventListener('DOMContentLoaded', () => {
         });
 
         ocn.subscribe('toggle-vis', id => {
-        	console.log(id, document.getElementById(id));
 
         	var ele = document.getElementById(id);
-        	
+
         	ele.classList.toggle('hidden');
         });
 
@@ -194,14 +192,3 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
 });
-
-
-
-
-
-
-// ./node_modules/ncp/bin/ncp src/vendor out/vendor; ./node_modules/ncp/bin/ncp src/index.html out/index.html
-// 
-// "build": "node ./node_modules/babel-cli/bin/babel.js --ignore src/vendor/  src --out-dir out; ./node_modules/ncp/bin/ncp src/vendor out/vendor; ./node_modules/ncp/bin/ncp src/index.html out/index.html; ./node_modules/ncp/bin/ncp app.json out/app.json; ./node_modules/ncp/bin/ncp src/css out/css; ./node_modules/ncp/bin/ncp src/views out/views"
-// 
-// // "build": "./node_modules/ncp/bin/ncp src/ out; node ./node_modules/babel-cli/bin/babel.js --ignore src/vendor/  src --out-dir out; "

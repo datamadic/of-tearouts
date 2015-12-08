@@ -1,6 +1,5 @@
 'use strict';
 
-//window.addEventListener('DOMContentLoaded', () => {
 fin.desktop.main(function () {
     var name = document.querySelector('.name'),
         value = document.querySelector('.value'),
@@ -18,7 +17,7 @@ fin.desktop.main(function () {
     });
 
     close.addEventListener('click', function () {
-        //root.$off('nums-changed');
+
         if (unsub) {
             unsub();
         }
@@ -38,8 +37,4 @@ fin.desktop.main(function () {
 
         unsub();
     });
-
-    //window.opener.ocn.dispatch('drop-rdy');
 });
-
-//});
