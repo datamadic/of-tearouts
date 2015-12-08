@@ -1,0 +1,19 @@
+{
+    "devtools_port": 9090,
+    "startup_app": {
+        "name": "tearouts",
+        "description": "OpenFin POC",
+        "url": "http://local:8080/",
+        "uuid": "tearouts-iwbsmxmn8u2fbt9",
+        "autoShow": true
+    },
+    "runtime": {
+        "arguments": "",
+        "version": "stable"
+    },
+    "shortcut": {
+        "company": "OpenFin",
+        "description": "Openfin POC",
+        "name": "tearouts"
+    }
+}

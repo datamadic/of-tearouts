@@ -1,0 +1,67 @@
+.row {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.stock {
+	width: 145px;
+	height: 145px;
+	background-color: steelblue;
+	margin: 5px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.drop-target {
+	width: 150px;
+	height: 150px;
+	background-color: #f2f2f2;
+	margin: 5px;
+	display: inline-block;
+
+	border-style: dashed;
+    border-color: silver;
+    display: flex;
+
+}
+
+.drop-target .span {
+	font-size: 40px;
+	border-radius: 3px;
+}
+
+.drop {
+	overflow: hidden;
+	margin:0;
+	padding: 0;
+}
+
+.drop-bdy {
+	overflow: hidden;
+	-webkit-app-region: drag;
+	display: flex;
+	flex-direction: column;
+	padding: 5px;
+}
+
+.hidden {
+	opacity: 0;
+}
+
+.top-bar {
+	/*height: 10px;*/
+	/*width: 90%;*/
+	-webkit-app-region: no-drag;
+	/*background-color: indianred;*/
+	flex: 1;
+
+}
+
+.drop-bdy .stock {
+	width: 120px;
+	height: 120px;
+	flex: 5;
+}
