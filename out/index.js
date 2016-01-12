@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', function () {
     fin.desktop.main(function () {
 
         var dropTarget = new fin.desktop.Window({
-            url: 'views/drop.html',
+            url: 'http://datamadic.github.io/of-tearouts/out/views/drop.html',
             name: 'drop',
             autoShow: true,
             opacity: 0.0,
