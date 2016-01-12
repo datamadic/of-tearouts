@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', function () {
         function nextDropWindow() {
             var name = 'drop-to-create' + Math.random(),
                 dropCreate = new fin.desktop.Window({
-                url: './views/drop-to-create.html',
+                url: 'http://datamadic.github.io/of-tearouts/out/views/drop-to-create.html',
                 name: name,
                 autoShow: true,
                 opacity: 0.0,
