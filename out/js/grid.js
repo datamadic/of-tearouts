@@ -2,7 +2,7 @@
 
 angular.module('tearoutapp').directive('grid', function () {
        return {
-              templateUrl: "../views/grid.html",
+              templateUrl: "http://datamadic.github.io/of-tearouts/out/views/grid.html",
               restrict: "E",
               scope: {},
               controller: function controller($scope, $interval, $rootScope) {
