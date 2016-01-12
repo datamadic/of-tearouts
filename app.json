@@ -3,7 +3,7 @@
     "startup_app": {
         "name": "tearouts",
         "description": "OpenFin POC",
-        "url": "http://local:8080/",
+        "url": "http://datamadic.github.io/of-tearouts/out/index.html",
         "uuid": "tearouts-iwbsmxmn8u2fbt9",
         "autoShow": true
     },
